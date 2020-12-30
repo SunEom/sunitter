@@ -1,27 +1,21 @@
 import { dbService } from 'myBase';
 import React, { useEffect, useState } from 'react';
 
-const Home = () => {
+const Home = ({ userObj }) => {
   const [suneet, setSuneet] = useState('');
   const [suneets, setSuneets] = useState([]);
-  const getSuneets = async () => {
-    const dbSuneets = await dbService.collection('suneets').get();
-    dbSuneets.forEach((document) => {
-      const suneetObject = {
-        ...document.data(),
-        id: document.id,
-      };
-      setSuneets((prev) => [suneetObject, ...prev]);
-    });
-  };
   useEffect(() => {
-    getSuneets();
+    dbService.collection('suneets').onSnapshot((snapshot) => {
+      const suneetArray = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setSuneets(suneetArray);
+    });
   }, []);
   const onSubmit = async (event) => {
     event.preventDefault();
     await dbService.collection('suneets').add({
-      suneet,
+      text: suneet,
       createdAt: Date.now(),
+      creatorId: userObj.uid,
     });
     setSuneet('');
   };
@@ -40,7 +34,7 @@ const Home = () => {
       <div>
         {suneets.map((suneet) => (
           <div key={suneet.id}>
-            <h4>{suneet.suneet}</h4>
+            <h4>{suneet.text}</h4>
           </div>
         ))}
       </div>
