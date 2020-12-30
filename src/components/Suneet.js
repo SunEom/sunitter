@@ -29,11 +29,15 @@ const Suneet = ({ suneetObj, isOwner }) => {
     <div>
       {editing ? (
         <>
-          <form onSubmit={onSubmit}>
-            <input onChange={onChange} type="text" placeholder="Edit your Suneet" value={newSuneet} required />
-            <input type="submit" value="Update Suneet" />
-          </form>
-          <button onClick={toggleEditing}>Cancel</button>
+          {isOwner && (
+            <>
+              <form onSubmit={onSubmit}>
+                <input onChange={onChange} type="text" placeholder="Edit your Suneet" value={newSuneet} required />
+                <input type="submit" value="Update Suneet" />
+              </form>
+              <button onClick={toggleEditing}>Cancel</button>
+            </>
+          )}
         </>
       ) : (
         <>
