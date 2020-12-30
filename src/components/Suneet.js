@@ -29,7 +29,7 @@ const Suneet = ({ suneetObj, isOwner }) => {
     setNewSuneet(value);
   };
   return (
-    <div>
+    <div className="suneet">
       {editing ? (
         <>
           {isOwner && (
@@ -55,9 +55,9 @@ const Suneet = ({ suneetObj, isOwner }) => {
       ) : (
         <>
           <h4>{suneetObj.text}</h4>
-          {suneetObj.attachmentUrl && <img alt="atttachment" src={suneetObj.attachmentUrl} />}
+          {suneetObj.attachmentUrl && <img alt="attachment" src={suneetObj.attachmentUrl} />}
           {isOwner && (
-            <div class="suneet__actions">
+            <div className="suneet__actions">
               <span onClick={onDeleteClick}>
                 <FontAwesomeIcon icon={faTrash} />
               </span>
