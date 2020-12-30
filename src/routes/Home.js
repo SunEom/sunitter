@@ -1,9 +1,15 @@
+import { dbService } from 'myBase';
 import React, { useState } from 'react';
 
 const Home = () => {
   const [suneet, setSuneet] = useState('');
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
+    await dbService.collection('suneet').add({
+      suneet,
+      createdAt: Date.now(),
+    });
+    setSuneet('');
   };
   const onChange = (event) => {
     const {
@@ -13,8 +19,8 @@ const Home = () => {
   };
   return (
     <div>
-      <form>
-        <input type="text" placeholder="What's on your mind?" maxLength={120} />
+      <form onSubmit={onSubmit}>
+        <input onChange={onChange} value={suneet} type="text" required placeholder="What's on your mind?" maxLength={120} />
         <input type="submit" value="Suneet" />
       </form>
     </div>
