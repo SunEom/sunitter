@@ -15,16 +15,22 @@ const Home = ({ userObj }) => {
   }, []);
   const onSubmit = async (event) => {
     event.preventDefault();
-    const fileRef = storageService.ref().child(`${userObj.uid}/${uudiv4()}`);
-    const response = await fileRef.putString(attachment, 'data_url');
-    console.log(response);
+    let attachmentUrl = '';
+    if (attachment != '') {
+      const attachmentRef = storageService.ref().child(`${userObj.uid}/${uudiv4()}`);
+      const response = await attachmentRef.putString(attachment, 'data_url');
+      attachmentUrl = await response.ref.getDownloadURL();
+    }
+    const suneetObj = {
+      text: suneet,
+      createdAt: Date.now(),
+      creatorId: userObj.uid,
+      attachmentUrl,
+    };
 
-    // await dbService.collection('suneets').add({
-    //   text: suneet,
-    //   createdAt: Date.now(),
-    //   creatorId: userObj.uid,
-    // });
-    // setSuneet('');
+    await dbService.collection('suneets').add(suneetObj);
+    setSuneet('');
+    setAttachment(null);
   };
   const onChange = (event) => {
     const {
