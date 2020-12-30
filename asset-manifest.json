@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/sunitter/static/css/main.4c49b98b.chunk.css",
+    "main.js": "/sunitter/static/js/main.4ce9da94.chunk.js",
+    "main.js.map": "/sunitter/static/js/main.4ce9da94.chunk.js.map",
+    "runtime-main.js": "/sunitter/static/js/runtime-main.d8a24ebf.js",
+    "runtime-main.js.map": "/sunitter/static/js/runtime-main.d8a24ebf.js.map",
+    "static/js/2.bacfe123.chunk.js": "/sunitter/static/js/2.bacfe123.chunk.js",
+    "static/js/2.bacfe123.chunk.js.map": "/sunitter/static/js/2.bacfe123.chunk.js.map",
+    "index.html": "/sunitter/index.html",
+    "static/css/main.4c49b98b.chunk.css.map": "/sunitter/static/css/main.4c49b98b.chunk.css.map",
+    "static/js/2.bacfe123.chunk.js.LICENSE.txt": "/sunitter/static/js/2.bacfe123.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d8a24ebf.js",
+    "static/js/2.bacfe123.chunk.js",
+    "static/css/main.4c49b98b.chunk.css",
+    "static/js/main.4ce9da94.chunk.js"
+  ]
+}
