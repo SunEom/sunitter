@@ -1,3 +1,4 @@
+import Suneet from 'components/Suneet';
 import { dbService } from 'myBase';
 import React, { useEffect, useState } from 'react';
 
@@ -33,9 +34,7 @@ const Home = ({ userObj }) => {
       </form>
       <div>
         {suneets.map((suneet) => (
-          <div key={suneet.id}>
-            <h4>{suneet.text}</h4>
-          </div>
+          <Suneet key={suneet.id} suneetObj={suneet} isOwner={suneet.creatorId === userObj.uid} />
         ))}
       </div>
     </div>
