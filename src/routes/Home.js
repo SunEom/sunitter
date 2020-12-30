@@ -6,13 +6,15 @@ import { v4 as uudiv4 } from 'uuid';
 const Home = ({ userObj }) => {
   const [suneet, setSuneet] = useState('');
   const [suneets, setSuneets] = useState([]);
-  const [attachment, setAttachment] = useState();
+  const [attachment, setAttachment] = useState('');
+
   useEffect(() => {
     dbService.collection('suneets').onSnapshot((snapshot) => {
       const suneetArray = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setSuneets(suneetArray);
     });
   }, []);
+
   const onSubmit = async (event) => {
     event.preventDefault();
     let attachmentUrl = '';
@@ -32,12 +34,14 @@ const Home = ({ userObj }) => {
     setSuneet('');
     setAttachment(null);
   };
+
   const onChange = (event) => {
     const {
       target: { value },
     } = event;
     setSuneet(value);
   };
+
   const onFileChange = (event) => {
     const {
       target: { files },
@@ -52,6 +56,7 @@ const Home = ({ userObj }) => {
     };
     reader.readAsDataURL(theFile);
   };
+
   const onClearAttachmentClick = () => setAttachment(null);
   return (
     <div>
