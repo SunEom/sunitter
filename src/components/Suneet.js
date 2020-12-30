@@ -1,4 +1,4 @@
-import { dbService } from 'myBase';
+import { dbService, storageService } from 'myBase';
 import React, { useState } from 'react';
 
 const Suneet = ({ suneetObj, isOwner }) => {
@@ -9,6 +9,7 @@ const Suneet = ({ suneetObj, isOwner }) => {
     console.log(ok);
     if (ok) {
       await dbService.doc(`suneets/${suneetObj.id}`).delete();
+      await storageService.refFromURL(`${suneetObj.attachmentUrl}`).delete();
     }
   };
   const toggleEditing = () => setEditing((prev) => !prev);
