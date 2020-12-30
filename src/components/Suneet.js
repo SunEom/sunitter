@@ -43,7 +43,7 @@ const Suneet = ({ suneetObj, isOwner }) => {
       ) : (
         <>
           <h4>{suneetObj.text}</h4>
-          {suneetObj.attachmentUrl && <img src={suneetObj.attachmentUrl} width="50px" height="50px" />}
+          {suneetObj.attachmentUrl && <img alt="#" src={suneetObj.attachmentUrl} width="50px" height="50px" />}
           {isOwner && (
             <>
               <button onClick={onDeleteClick}>Delete Suneet</button>
