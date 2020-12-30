@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/sunitter/static/css/main.f82d71bc.chunk.css",
-    "main.js": "/sunitter/static/js/main.4ce9da94.chunk.js",
-    "main.js.map": "/sunitter/static/js/main.4ce9da94.chunk.js.map",
+    "main.js": "/sunitter/static/js/main.270a7c71.chunk.js",
+    "main.js.map": "/sunitter/static/js/main.270a7c71.chunk.js.map",
     "runtime-main.js": "/sunitter/static/js/runtime-main.d8a24ebf.js",
     "runtime-main.js.map": "/sunitter/static/js/runtime-main.d8a24ebf.js.map",
     "static/js/2.bacfe123.chunk.js": "/sunitter/static/js/2.bacfe123.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.d8a24ebf.js",
     "static/js/2.bacfe123.chunk.js",
     "static/css/main.f82d71bc.chunk.css",
-    "static/js/main.4ce9da94.chunk.js"
+    "static/js/main.270a7c71.chunk.js"
   ]
 }
