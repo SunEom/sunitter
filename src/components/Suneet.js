@@ -1,5 +1,7 @@
 import { dbService, storageService } from 'myBase';
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Suneet = ({ suneetObj, isOwner }) => {
   const [editing, setEditing] = useState(false);
@@ -32,23 +34,37 @@ const Suneet = ({ suneetObj, isOwner }) => {
         <>
           {isOwner && (
             <>
-              <form onSubmit={onSubmit}>
-                <input onChange={onChange} type="text" placeholder="Edit your Suneet" value={newSuneet} required />
-                <input type="submit" value="Update Suneet" />
+              <form onSubmit={onSubmit} className="container suneetEdit">
+                <input
+                  onChange={onChange}
+                  type="text"
+                  placeholder="Edit your Suneet"
+                  value={newSuneet}
+                  required
+                  autoFocus
+                  className="formInput"
+                />
+                <input type="submit" value="Update Suweet" className="formBtn" />
               </form>
-              <button onClick={toggleEditing}>Cancel</button>
+              <span onClick={toggleEditing} className="formBtn cancelBtn">
+                Cancel
+              </span>
             </>
           )}
         </>
       ) : (
         <>
           <h4>{suneetObj.text}</h4>
-          {suneetObj.attachmentUrl && <img alt="#" src={suneetObj.attachmentUrl} width="50px" height="50px" />}
+          {suneetObj.attachmentUrl && <img alt="atttachment" src={suneetObj.attachmentUrl} />}
           {isOwner && (
-            <>
-              <button onClick={onDeleteClick}>Delete Suneet</button>
-              <button onClick={toggleEditing}>Edit Suneet</button>
-            </>
+            <div class="suneet__actions">
+              <span onClick={onDeleteClick}>
+                <FontAwesomeIcon icon={faTrash} />
+              </span>
+              <span onClick={toggleEditing}>
+                <FontAwesomeIcon icon={faPencilAlt} />
+              </span>
+            </div>
           )}
         </>
       )}

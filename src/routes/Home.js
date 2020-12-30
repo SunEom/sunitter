@@ -14,9 +14,9 @@ const Home = ({ userObj }) => {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       <SuneetFactory userObj={userObj} />
-      <div>
+      <div style={{ marginTop: 30 }}>
         {suneets.map((suneet) => (
           <Suneet key={suneet.id} suneetObj={suneet} isOwner={suneet.creatorId === userObj.uid} />
         ))}
