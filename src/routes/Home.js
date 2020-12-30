@@ -1,6 +1,7 @@
 import Suneet from 'components/Suneet';
-import { dbService } from 'myBase';
+import { dbService, storageService } from 'myBase';
 import React, { useEffect, useState } from 'react';
+import { v4 as uudiv4 } from 'uuid';
 
 const Home = ({ userObj }) => {
   const [suneet, setSuneet] = useState('');
@@ -14,12 +15,16 @@ const Home = ({ userObj }) => {
   }, []);
   const onSubmit = async (event) => {
     event.preventDefault();
-    await dbService.collection('suneets').add({
-      text: suneet,
-      createdAt: Date.now(),
-      creatorId: userObj.uid,
-    });
-    setSuneet('');
+    const fileRef = storageService.ref().child(`${userObj.uid}/${uudiv4()}`);
+    const response = await fileRef.putString(attachment, 'data_url');
+    console.log(response);
+
+    // await dbService.collection('suneets').add({
+    //   text: suneet,
+    //   createdAt: Date.now(),
+    //   creatorId: userObj.uid,
+    // });
+    // setSuneet('');
   };
   const onChange = (event) => {
     const {
