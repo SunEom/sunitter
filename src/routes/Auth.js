@@ -1,4 +1,4 @@
-import { authService } from 'myBase';
+import { authService, myBaseInstance } from 'myBase';
 import React, { useState } from 'react';
 
 const Auth = () => {
@@ -33,7 +33,20 @@ const Auth = () => {
   };
 
   const toggleAccount = () => setNewAccount((prev) => !prev);
+  const onSocialClick = async (event) => {
+    const {
+      target: { name },
+    } = event;
+    let provider;
+    if (name === 'google') {
+      provider = new myBaseInstance.auth.GoogleAuthProvider();
+    } else if (name === 'github') {
+      provider = new myBaseInstance.auth.GithubAuthProvider();
+    }
 
+    const data = await authService.signInWithPopup(provider);
+    console.log(data);
+  };
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -44,8 +57,12 @@ const Auth = () => {
       </form>
       <span onClick={toggleAccount}>{newAccount ? 'Sign in' : 'Create Account'}</span>
       <div>
-        <button>Continue with Google</button>
-        <button>Continue with Github</button>
+        <button name="google" onClick={onSocialClick}>
+          Continue with Google
+        </button>
+        <button name="github" onClick={onSocialClick}>
+          Continue with Github
+        </button>
       </div>
     </div>
   );
